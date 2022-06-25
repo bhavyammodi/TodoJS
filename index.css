@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-image: linear-gradient(120deg, aqua, #21f500);
+  color: white;
+  font-family: "Comfortaa", sans-serif;
+  min-height: 100vh;
+}
+header {
+  font-size: 1.5rem;
+}
+header,
+form {
+  min-height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+form input,
+form button {
+  padding: 0.5rem;
+  font-size: 32px;
+  border: none;
+  background: white;
+}
+form input {
+  font-size: 32px;
+  /* font-family: monospace; */
+  font-family: "Comfortaa", sans-serif;
+}
+form button {
+  color: aqua;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+/* here we are styling with HTML tag contents */
+form button:hover {
+  background: transparent;
+  color: white;
+}
+/* here we are styling with class names */
+.todo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-list {
+  min-width: 30%;
+  list-style: none; /* removes the bullets */
+}
+
+.todo {
+  margin: 0.5rem;
+  background-color: white;
+  color: black;
+  font-size: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.25s ease;
+}
+
+.todo li {
+  flex: 1; /* brings tick to right */
+}
+
+.delete-btn
+{
+  background-color: orangered;
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.complete-btn
+{
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.todo-item
+{
+  padding: 0rem 0.5rem;
+}
+
+.fa-trash, .fa-check
+{
+  /* removing the issue which was that only 
+  icon was working for delete and right button 
+  instead of whole area. */
+  pointer-events: none; 
+}
+
+.completed
+{
+  text-decoration-line: line-through;
+  color: gray;
+  opacity: 0.5;
+  background-color: black;
+}
+
+.fall /* delete animations */
+{
+  transform: translateY(8rem) rotateZ(10deg);
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.filter-todo
+{
+  display: flex;
+  padding: 1rem;
+}
