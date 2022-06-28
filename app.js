@@ -2,13 +2,38 @@
 const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
+const filter = document.querySelector(".filter-todo");
 
 // Event Listeners
 todoButton.addEventListener("click", addTodo); // addTodo is a func
 todoList.addEventListener("click", deleteButton);
+filter.addEventListener("click", filterTodo);
+
+// Extra variables
+let filteropt = "all";
 
 // Functions
-
+function filterchecker() {
+  const todos = todoList.childNodes;
+  todos.forEach(function (todo) {
+    // Removing if it is under other tab
+    if (filteropt == "all") {
+      todo.style.display = "flex";
+    } else if (filteropt == "completed") {
+      if (todo.classList.contains("completed")) {
+        todo.style.display = "flex";
+      } else {
+        todo.style.display = "none";
+      }
+    } else if (filteropt == "uncompleted") {
+      if (todo.classList.contains("completed")) {
+        todo.style.display = "none";
+      } else {
+        todo.style.display = "flex";
+      }
+    }
+  });
+}
 function addTodo(e) {
   // for preventing natural behaviour
   e.preventDefault();
@@ -39,8 +64,10 @@ function addTodo(e) {
     todoDiv.appendChild(deleteButton);
 
     // Append at last
-    todoList.appendChild(todoDiv);
+    todoList.insertBefore(todoDiv, todoList.firstElementChild);
+    // using insertBefore to insert the inverted list, using appendChild makes it normal
   }
+  filterchecker();
   // clear the input
   todoInput.value = "";
 }
@@ -65,5 +92,39 @@ function deleteButton(e) {
   if (item.classList[0] === "complete-btn") {
     const tobedone = item.parentElement;
     tobedone.classList.toggle("completed"); // toggling the class
+    filterchecker();
   }
+}
+
+function filterTodo(e) {
+  const todos = todoList.childNodes;
+  todos.forEach(function (todo) {
+    switch (e.target.value) {
+      case "all":
+        todo.style.display = "flex";
+        filteropt = "all";
+        break;
+      case "completed":
+        if (todo.classList.contains("completed")) {
+          todo.style.display = "flex";
+        } else {
+          todo.style.display = "none";
+        }
+        filteropt = "completed";
+        break;
+      case "uncompleted":
+        if (todo.classList.contains("completed")) {
+          todo.style.display = "none";
+        } else {
+          todo.style.display = "flex";
+        }
+        filteropt = "uncompleted";
+        break;
+    }
+  });
+}
+
+function saveLocal(todo)
+{
+  
 }
