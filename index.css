@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+} 
 body {
   background-image: linear-gradient(120deg, aqua, #21f500);
   color: white;
@@ -117,8 +117,37 @@ form button:hover {
   opacity: 0;
 }
 
-.filter-todo
+.select
 {
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+select{
+  color: aqua;
   display: flex;
   padding: 1rem;
+  /* margin : 1rem; */
+  width: 10rem;
+  cursor: pointer;  
+}
+.select::after
+{
+  content: "\25BC";
+  color:white;
+  position: absolute;
+  background-color: aqua;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  pointer-events: none;  /* click through this object */
+}
+.select:hover::after
+{
+  background: #21f500;
+  color: aqua;
+  transition: all 0.5s ease;
+}
+.select:hover .todos {
+  display: block; 
 }
